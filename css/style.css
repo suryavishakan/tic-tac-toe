@@ -1,143 +1,151 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+/* ==== Google Fonts =====*/
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
-*{
-    box-sizing: border-box;
-    margin: 0;
+/* ==== Global styles =====*/
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-body{
-    font-family: 'Bungee', cursive;
-    color: #a870e9;
+body {
+  font-family: "Bungee", cursive;
+  color: #a870e9;
 }
 
-.title{
-    max-width: 500px;
+/* ==== Default styles =====*/
+
+.title {
+  max-width: 500px;
 }
 
-.wrapper{
-    max-width: 1100px;
-    height: 95vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 40px;
+.wrapper {
+  max-width: 1100px;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 40px;
 }
 
-h1{
-    font-size: 45px;
-    font-weight: 200;
+h1 {
+  font-size: 45px;
+  font-weight: 200;
 }
 
-.restart{
-    width:175px ;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    border: 2px solid #4c6986;
-    transition: all 0.2s ease;
-    font-weight: 300;
-    margin-top: 2rem;
-    border-color: #a870e9;
-    cursor: pointer;
+/* ==== Content section =====*/
+
+.restart {
+  width: 175px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  border: 2px solid #4c6986;
+  transition: all 0.2s ease;
+  font-weight: 300;
+  margin-top: 2rem;
+  border-color: #a870e9;
+  cursor: pointer;
 }
 
-.restart:hover{
-    background: #a870e9;
-    color: #fff;
-    border-color: #a870e9;
-
+.restart:hover {
+  background: #a870e9;
+  color: #fff;
+  border-color: #a870e9;
 }
 
-.game{
-    width: 500px;
-    height: 500px;
-    display: flex;
+/* ==== Game Section =====*/
+
+.game {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  color: #9a9a9a;
+  font-size: 1.5rem;
+}
+
+.header .player-x {
+  flex-grow: 1;
+  border-bottom: 5px solid #eee;
+  padding-bottom: 8px;
+}
+.player-x span,
+.player-o span {
+  font-weight: 900;
+}
+
+.player-x.active {
+  color: #42bed7;
+  border-left: 5px solid #42bed7;
+}
+
+.player-o.active {
+  color: #f181f1;
+  border-left: 5px solid #f181f1;
+}
+
+.header .player-o {
+  flex-grow: 1;
+  border-bottom: 5px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* ==== Game Tile =====*/
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 0;
+  flex-grow: 1;
+  padding: 10px;
+}
+
+.board-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  cursor: pointer;
+  font-weight: 900;
+}
+.board-tile:not(:nth-child(3n)) {
+  border-right: 3px solid #4c6986;
+}
+.board-tile:not(:nth-last-child(-n + 3)) {
+  border-bottom: 3px solid #4c6986;
+}
+
+.board-tile:hover {
+  background-color: #eee;
+}
+
+.tile-x {
+  color: #42bed7;
+}
+.tile-o {
+  color: #f181f1;
+}
+
+.tile-winner span {
+  color: #73ff6e;
+}
+
+/* ==== Media Queries =====*/
+
+@media only screen and (max-width: 1200px) {
+  .wrapper {
     flex-direction: column;
-}
+  }
 
-.header{
-    display: flex;
-    color: #9a9a9a;
-    font-size: 1.5rem;
+  .left {
+    margin-bottom: 50px;
+  }
 }
-
-.header .player-x{
-    flex-grow: 1;
-    border-bottom: 5px solid #eee;
-    padding-bottom: 8px;
-}
-.player-x span, .player-o span{
-    font-weight: 900;
-}
-
-.player-x.active{
-    color:#42bed7;
-    border-left: 5px solid #42bed7;
-}
-
-.player-o.active{
-    color:#f181f1;
-    border-left: 5px solid #f181f1;
-    
-}
-
-.header .player-o{
-    flex-grow: 1;
-    border-bottom: 5px solid #eee ;
-    padding-bottom: 8px;
-}
-
-.board{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,1fr);
-    grid-gap: 0;
-    flex-grow: 1;
-    padding: 10px;
-}
-
-.board-tile{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    cursor: pointer;
-    font-weight: 900;
-
-}
-.board-tile:not(:nth-child(3n)){
-    border-right: 3px solid #4c6986;
-
-}
-.board-tile:not(:nth-last-child(-n+3)){
-    border-bottom: 3px solid #4c6986;
-}
-
-.board-tile:hover{
-    background-color: #eee;
-}
-
-.tile-x{
-    color: #42bed7;
-}
-.tile-o{
-    color: #f181f1;
-}
-
-.tile-winner span{
-    color:#73ff6e;
-}
-
-@media only screen and (max-width:1200px){
-    .wrapper{
-        flex-direction: column;
-    }
-
-    .left{
-        margin-bottom: 50px;
-    }
-}
-
